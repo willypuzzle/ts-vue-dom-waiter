@@ -16,6 +16,15 @@
  *
  */
 
+    .background.black-and-white {
+        background-color: black !important;
+    }
+
+    .sk-cube-grid .sk-cube.black-and-white {
+        background-color: white !important;
+    }
+
+
     .sk-cube-grid {
         width: 80px;
         height: 80px;
@@ -77,18 +86,18 @@
 </style>
 
 <template>
-    <div :id="'waiter-background-' + randString()" v-if="active" style="background-color: #075c90; opacity: 0.8; width: 100%; height: 100%; position: fixed; z-index: 99999998;top: 0; left: 0;">
+    <div :id="'waiter-background-' + randString()" v-if="active" :class="`background ${theme}`" style="background-color: #075c90; opacity: 0.8; width: 100%; height: 100%; position: fixed; z-index: 99999998;top: 0; left: 0;">
         <div style="position:fixed; top:50%; left:50%; z-index:99999999;" >
-            <div class="sk-cube-grid">
-                <div class="sk-cube sk-cube1"></div>
-                <div class="sk-cube sk-cube2"></div>
-                <div class="sk-cube sk-cube3"></div>
-                <div class="sk-cube sk-cube4"></div>
-                <div class="sk-cube sk-cube5"></div>
-                <div class="sk-cube sk-cube6"></div>
-                <div class="sk-cube sk-cube7"></div>
-                <div class="sk-cube sk-cube8"></div>
-                <div class="sk-cube sk-cube9"></div>
+            <div :class="`sk-cube-grid ${theme}`">
+                <div :class="`sk-cube sk-cube1 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube2 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube3 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube4 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube5 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube6 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube7 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube8 ${theme}`"></div>
+                <div :class="`sk-cube sk-cube9 ${theme}`"></div>
             </div>
         </div>
     </div>
@@ -97,7 +106,11 @@
 <script lang="ts">
     export default {
         props: {
-            active: false
+            active: false,
+            theme: {
+                type: String,
+                default: ''
+            }
         },
         methods: {
             randString(){
